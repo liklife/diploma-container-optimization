@@ -19,14 +19,14 @@
 - T04 загрузчик конфигов (ПОСЛЕ T02, т.к. зависит от Vessel)
 
 ## План на 13.10.2026
-1. Issues cleanup: закрыть #4 (DEAP), #11 (генетика DEAP), #13 (navaltoolbox) 
-   с комментарием «заменено pymoo/NumPy».
-2. Обновить Issue #16 (T02): 6 сущностей, ID 0 допустим.
-3. Проверить Project Board.
-4. Создать configs/vessel.json, limits.json, ports.json.
-5. Начать T02: Container + тест → ContainerType → PortRotation → Slot → 
-   Vessel → Plan. По коммиту на каждую сущность.
-6. T04 (загрузчик) — ПОСЛЕ T02.
+1. CSV эталон: data/containers.csv → data/samples/containers_legacy.csv.
+2. T01 проверить (не закрывать повторно): smoke-тест, pip install -e ., pytest, pip check.
+3. Issues cleanup: комментарии к #4/#11/#13, #16 → 6 сущностей, #17 → зависимость от #16+#18, #18 → JSON + загрузчик.
+4. Project Board — проверить вручную.
+5. git mv result/ → results/.
+6. Обновить decisions.md: box-barge, GA (физика ОТДЕЛЬНО от декодера), порты (СПб → Санкт-Петербург), id int, лимиты привязать к судну, bay/колонна, единицы _kg/_t, GM 0.15 — «общий критерий IMO, требует подтверждения».
+7. configs/vessel.json, limits.json, ports.json.
+8. T02: Container → ContainerType → PortRotation → Slot → Vessel → Plan.
 
 ## Открытые вопросы
 - Пороги крена/дифферента — уточнить у руководителя.
