@@ -53,28 +53,37 @@ for cell in cells:
         cont = next(c for c in containers if c['id'] == cell['container_id'])
         print(f"Ячейка bay={cell['bay']}, row={cell['row']}: контейнер {cont['id']}, вес {cont['weight']}, порт {cont['port']}")
 
-# 5. Визуализация
+# 5. Визуализация с подписями
 grid = np.zeros((N_BAYS, N_ROWS))
 port_colors = {'Мурманск': 1, 'СПб': 2, 'Калининград': 3}
+labels = {}  # для подписей
+
 for cell in cells:
     if cell['container_id'] is not None:
         cont = next(c for c in containers if c['id'] == cell['container_id'])
         grid[cell['bay'], cell['row']] = port_colors[cont['port']]
+        labels[(cell['bay'], cell['row'])] = f"#{cont['id']}\n{cont['weight']}"
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(12, 8))
 cmap = plt.cm.colors.ListedColormap(['white', 'red', 'blue', 'green'])
 ax.imshow(grid, cmap=cmap, aspect='auto')
+
+# Подписи в ячейках
+for (bay, row), text in labels.items():
+    ax.text(row, bay, text, ha='center', va='center', 
+            color='white', fontsize=9, fontweight='bold')
+
 ax.set_xticks(range(N_ROWS))
 ax.set_yticks(range(N_BAYS))
-ax.set_xlabel('Row')
-ax.set_ylabel('Bay')
-ax.set_title('Схема загрузки (цвет = порт назначения)')
+ax.set_xlabel('Row (ряд)')
+ax.set_ylabel('Bay (секция)')
+ax.set_title('Схема загрузки: #id + вес (кг), цвет = порт')
 
 legend_elements = [
     Patch(facecolor='red', label='Мурманск'),
     Patch(facecolor='blue', label='СПб'),
     Patch(facecolor='green', label='Калининград')
 ]
-ax.legend(handles=legend_elements, loc='upper right')
+ax.legend(handles=legend_elements, loc='upper right', bbox_to_anchor=(1.15, 1))
 plt.savefig('result/loading_scheme.png', dpi=150, bbox_inches='tight')
 print("Визуализация сохранена в result/loading_scheme.png")
