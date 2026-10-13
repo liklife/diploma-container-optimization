@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stowage-optimization"
-version = "0.1.0"
+version = "0.2.0"
 description = "Container stowage optimization considering ship stability and transshipments"
 requires-python = ">=3.13"
 dependencies = [
