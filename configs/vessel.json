@@ -1,0 +1,35 @@
+
+{
+    "schema_version": 1,
+    "vessel_id": "synthetic_box_barge_8x4x3",
+    "name": "Синтетическая баржа — сценарий 8x4x3",
+    "synthetic": true,
+    "hull_model": "box_barge",
+  
+    "length_m": 120.0,
+    "beam_m": 14.0,
+    "depth_m": 10.0,
+  
+    "bays": 8,
+    "rows": 4,
+    "tiers": 3,
+  
+    "first_bay_offset_m": 7.5,
+    "bay_spacing_m": 15.0,
+    "first_row_center_y_m": -5.25,
+    "row_spacing_m": 3.5,
+    "base_height_m": 0.2,
+    "container_height_m": 2.591,
+    "tier_spacing_m": 2.6,
+  
+    "lightship_mass_kg": 8000000,
+    "lightship_cg_x_m": 60.0,
+    "lightship_cg_y_m": 0.0,
+    "lightship_cg_z_m": 4.2,
+  
+    "water_density_kg_m3": 1025.0,
+  
+    "max_bay_load_t": 220.0,
+    "max_column_load_t": 60.0
+  }
+  

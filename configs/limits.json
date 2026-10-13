@@ -1,0 +1,15 @@
+
+{
+    "schema_version": 1,
+  
+    "max_container_mass_kg": 30480,
+  
+    "min_gm_m": 0.15,
+    "target_gm_m": 0.5,
+  
+    "max_abs_heel_deg": 1.0,
+    "max_abs_trim_percent_of_length": 1.0,
+  
+    "small_angle_model_max_abs_heel_deg": 5.0
+  }
+  
