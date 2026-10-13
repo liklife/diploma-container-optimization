@@ -1,7 +1,6 @@
-
 from dataclasses import dataclass
-import math
 
+from stowage.domain._validation import as_int, as_number, as_text
 from stowage.domain.slot import Slot
 
 
@@ -83,28 +82,21 @@ class Vessel:
 
     def __post_init__(self) -> None:
         for field_name in ("vessel_id", "name", "hull_model"):
-            value = getattr(self, field_name)
-
-            if not isinstance(value, str):
-                raise TypeError(
-                    f"Vessel {field_name} must be a string"
-                )
-
-            if not value.strip():
-                raise ValueError(
-                    f"Vessel {field_name} must not be empty"
-                )
+            object.__setattr__(
+                self,
+                field_name,
+                as_text(getattr(self, field_name), f"Vessel {field_name}"),
+            )
 
         if type(self.synthetic) is not bool:
             raise TypeError("Vessel synthetic flag must be a boolean")
 
         for field_name in ("bays", "rows", "tiers"):
-            value = getattr(self, field_name)
-
-            if type(value) is not int:
-                raise TypeError(
-                    f"Vessel {field_name} must be an integer"
-                )
+            value = as_int(
+                getattr(self, field_name),
+                f"Vessel {field_name}",
+            )
+            object.__setattr__(self, field_name, value)
 
             if value <= 0:
                 raise ValueError(
@@ -112,19 +104,11 @@ class Vessel:
                 )
 
         for field_name in _NUMERIC_FIELDS:
-            value = getattr(self, field_name)
-
-            if isinstance(value, bool) or not isinstance(
-                value, (int, float)
-            ):
-                raise TypeError(
-                    f"Vessel {field_name} must be a number"
-                )
-
-            if not math.isfinite(value):
-                raise ValueError(
-                    f"Vessel {field_name} must be finite"
-                )
+            value = as_number(
+                getattr(self, field_name),
+                f"Vessel {field_name}",
+            )
+            object.__setattr__(self, field_name, value)
 
         for field_name in _POSITIVE_FIELDS:
             if getattr(self, field_name) <= 0:
@@ -138,7 +122,6 @@ class Vessel:
                     f"Vessel {field_name} must be non-negative"
                 )
 
-        # Все секции должны помещаться по длине судна.
         last_bay_x = (
             self.first_bay_offset_m
             + (self.bays - 1) * self.bay_spacing_m
@@ -149,7 +132,6 @@ class Vessel:
                 "Bay positions must fit within vessel length"
             )
 
-        # Центры всех рядов должны находиться в пределах ширины.
         last_row_y = (
             self.first_row_center_y_m
             + (self.rows - 1) * self.row_spacing_m
@@ -170,7 +152,6 @@ class Vessel:
                 "Tier spacing must not be smaller than container height"
             )
 
-        # Проверяем, что верхний ярус не выходит за глубину модели.
         highest_container_top = (
             self.base_height_m
             + (self.tiers - 1) * self.tier_spacing_m
@@ -182,7 +163,6 @@ class Vessel:
                 "Container tiers must fit within vessel depth"
             )
 
-        # Проверяем положение центра тяжести порожнего судна.
         if not 0 <= self.lightship_cg_x_m <= self.length_m:
             raise ValueError(
                 "Lightship CG X must fit within vessel length"

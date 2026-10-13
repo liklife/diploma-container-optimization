@@ -95,3 +95,28 @@ def test_new_container_type_is_allowed():
     )
 
     assert container.container_type == "future_type"
+
+def test_container_normalizes_numpy_integer_id():
+    import numpy as np
+
+    container = Container(
+        id=np.int64(3),
+        mass_kg=10000,
+        port="Мурманск",
+        container_type="dry",
+    )
+
+    assert container.id == 3
+    assert type(container.id) is int
+
+
+def test_container_rejects_numpy_boolean_id():
+    import numpy as np
+
+    with pytest.raises(TypeError):
+        Container(
+            id=np.bool_(True),
+            mass_kg=10000,
+            port="Мурманск",
+            container_type="dry",
+        )

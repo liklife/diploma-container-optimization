@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from stowage.domain.container import Container
 from stowage.domain.slot import Slot
 from stowage.domain.vessel import Vessel
+from stowage.domain._validation import as_int
 
 
 @dataclass(frozen=True)
@@ -64,8 +65,10 @@ class Plan:
 
             container_id, slot = item
 
-            if type(container_id) is not int:
-                raise TypeError("Placement container ID must be an integer")
+            container_id = as_int(
+                container_id,
+                "Placement container ID",
+            )
 
             if container_id < 0:
                 raise ValueError(

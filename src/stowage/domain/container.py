@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-import math
+
+from stowage.domain._validation import as_int, as_number, as_text
 
 
 @dataclass
@@ -12,22 +13,22 @@ class Container:
     container_type: str
 
     def __post_init__(self) -> None:
-        if type(self.id) is not int:
-            raise TypeError("Container ID must be an integer")
+        object.__setattr__(self, "id", as_int(self.id, "Container ID"))
 
         if self.id < 0:
             raise ValueError("Container ID must be non-negative")
 
-        if isinstance(self.mass_kg, bool) or not isinstance(
-            self.mass_kg, (int, float)
-        ):
-            raise TypeError("Container mass must be a number")
+        mass = as_number(self.mass_kg, "Container mass")
 
-        if not math.isfinite(self.mass_kg) or self.mass_kg <= 0:
+        if mass <= 0:
             raise ValueError("Container mass must be positive and finite")
 
-        if not isinstance(self.port, str) or not self.port.strip():
-            raise ValueError("Container port must be a non-empty string")
-
-        if not isinstance(self.container_type, str) or not self.container_type.strip():
-            raise ValueError("Container type must be a non-empty string")
+        object.__setattr__(self, "mass_kg", mass)
+        object.__setattr__(
+            self, "port", as_text(self.port, "Container port")
+        )
+        object.__setattr__(
+            self,
+            "container_type",
+            as_text(self.container_type, "Container type"),
+        )

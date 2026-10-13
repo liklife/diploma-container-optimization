@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 import math
 
+from stowage.domain._validation import as_text
+
 
 @dataclass
 class ContainerType:
@@ -13,11 +15,12 @@ class ContainerType:
     )
 
     def __post_init__(self) -> None:
-        if not isinstance(self.code, str) or not self.code.strip():
-            raise ValueError("Container type code must be a non-empty string")
-
-        if not isinstance(self.name, str) or not self.name.strip():
-            raise ValueError("Container type name must be a non-empty string")
+        object.__setattr__(
+            self, "code", as_text(self.code, "Container type code")
+        )
+        object.__setattr__(
+            self, "name", as_text(self.name, "Container type name")
+        )
 
         if not isinstance(self.attributes, dict):
             raise TypeError("Container type attributes must be a dictionary")

@@ -1,5 +1,6 @@
-
 from dataclasses import dataclass
+
+from stowage.domain._validation import as_int
 
 
 @dataclass(frozen=True)
@@ -11,15 +12,12 @@ class Slot:
     tier: int
 
     def __post_init__(self) -> None:
-        for field_name, value in (
-            ("bay", self.bay),
-            ("row", self.row),
-            ("tier", self.tier),
-        ):
-            if type(value) is not int:
-                raise TypeError(
-                    f"Slot {field_name} index must be an integer"
-                )
+        for field_name in ("bay", "row", "tier"):
+            value = as_int(
+                getattr(self, field_name),
+                f"Slot {field_name} index",
+            )
+            object.__setattr__(self, field_name, value)
 
             if value < 0:
                 raise ValueError(

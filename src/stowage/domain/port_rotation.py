@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from stowage.domain._validation import as_text
+
 
 @dataclass(frozen=True)
 class PortRotation:
@@ -14,17 +16,15 @@ class PortRotation:
         if not self.ports:
             raise ValueError("Port rotation must contain at least one port")
 
+        normalized: list[str] = []
+
         for port in self.ports:
-            if not isinstance(port, str):
-                raise TypeError("Every port name must be a string")
-
-            if not port.strip():
-                raise ValueError("Port names must not be empty")
-
-            if port != port.strip():
-                raise ValueError(
-                    "Port names must not have surrounding whitespace"
+            normalized.append(
+                as_text(
+                    port,
+                    "Port name",
+                    reject_surrounding_whitespace=True,
                 )
+            )
 
-        # Храним последовательность неизменяемой.
-        object.__setattr__(self, "ports", tuple(self.ports))
+        object.__setattr__(self, "ports", tuple(normalized))

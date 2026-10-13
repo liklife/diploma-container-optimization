@@ -42,3 +42,24 @@ def test_slot_indices_cannot_be_changed():
 
     with pytest.raises(AttributeError):
         slot.bay = 3
+
+def test_slot_normalizes_numpy_integer_indices():
+    import numpy as np
+
+    slot = Slot(
+        bay=np.int64(3),
+        row=np.int64(1),
+        tier=np.int64(0),
+    )
+
+    assert (slot.bay, slot.row, slot.tier) == (3, 1, 0)
+    assert type(slot.bay) is int
+    assert type(slot.row) is int
+    assert type(slot.tier) is int
+
+
+def test_slot_rejects_numpy_boolean_index():
+    import numpy as np
+
+    with pytest.raises(TypeError):
+        Slot(bay=np.bool_(True), row=0, tier=0)
