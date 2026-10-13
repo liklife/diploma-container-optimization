@@ -123,9 +123,15 @@ def test_numeric_fields_reject_boolean_values(field_name):
 
 
 @pytest.mark.parametrize("field_name", NUMERIC_FIELDS)
-def test_numeric_fields_reject_non_finite_values(field_name):
+@pytest.mark.parametrize(
+    "invalid_value",
+    [float("nan"), float("inf"), float("-inf")],
+)
+def test_numeric_fields_reject_non_finite_values(
+    field_name, invalid_value
+):
     with pytest.raises(ValueError):
-        make_vessel(**{field_name: float("nan")})
+        make_vessel(**{field_name: invalid_value})
 
 
 POSITIVE_FIELDS = [
