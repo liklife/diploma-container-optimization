@@ -85,5 +85,5 @@ legend_elements = [
     Patch(facecolor='green', label='Калининград')
 ]
 ax.legend(handles=legend_elements, loc='upper right', bbox_to_anchor=(1.15, 1))
-plt.savefig('result/loading_scheme.png', dpi=150, bbox_inches='tight')
-print("Визуализация сохранена в result/loading_scheme.png")
+plt.savefig('results/loading_scheme.png', dpi=150, bbox_inches='tight')
+print("Визуализация сохранена в results/loading_scheme.png")
