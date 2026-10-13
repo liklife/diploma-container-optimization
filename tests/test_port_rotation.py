@@ -76,3 +76,65 @@ def test_non_string_port_is_rejected(invalid_port):
 def test_surrounding_whitespace_is_rejected(invalid_port):
     with pytest.raises(ValueError):
         PortRotation(ports=("Калининград", invalid_port))
+
+
+@pytest.mark.parametrize(
+    "ports",
+    [
+        ("Калининград", "Калининград"),
+        ("Калининград", "Мурманск", "Калининград"),
+    ],
+)
+def test_duplicate_ports_are_rejected(ports):
+    with pytest.raises(ValueError, match="duplicate ports"):
+        PortRotation(ports=ports)
+
+
+def test_index_of_returns_zero_based_position():
+    rotation = PortRotation(
+        ports=(
+            "Калининград",
+            "Санкт-Петербург",
+            "Мурманск",
+        )
+    )
+
+    assert rotation.index_of("Калининград") == 0
+    assert rotation.index_of("Санкт-Петербург") == 1
+    assert rotation.index_of("Мурманск") == 2
+
+
+def test_index_of_unknown_port_reports_known_ports():
+    rotation = PortRotation(
+        ports=("Калининград", "Мурманск")
+    )
+
+    with pytest.raises(ValueError) as error:
+        rotation.index_of("Архангельск")
+
+    message = str(error.value)
+    assert "Архангельск" in message
+    assert "Калининград" in message
+    assert "Мурманск" in message
+
+
+@pytest.mark.parametrize(
+    "invalid_port",
+    ["", "   ", " Мурманск", "Мурманск "],
+)
+def test_index_of_rejects_invalid_port_name(invalid_port):
+    rotation = PortRotation(
+        ports=("Калининград", "Мурманск")
+    )
+
+    with pytest.raises(ValueError):
+        rotation.index_of(invalid_port)
+
+
+def test_port_rotation_remains_immutable():
+    rotation = PortRotation(
+        ports=("Калининград", "Мурманск")
+    )
+
+    with pytest.raises(AttributeError):
+        rotation.ports = ("Архангельск",)
