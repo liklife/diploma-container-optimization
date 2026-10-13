@@ -120,3 +120,38 @@ def test_container_rejects_numpy_boolean_id():
             port="Мурманск",
             container_type="dry",
         )
+
+
+def test_container_fields_are_immutable():
+    container = Container(
+        id=1,
+        mass_kg=12000,
+        port="Мурманск",
+        container_type="dry",
+    )
+
+    with pytest.raises(AttributeError):
+        container.id = 2
+
+    with pytest.raises(AttributeError):
+        container.mass_kg = 15000
+
+    with pytest.raises(AttributeError):
+        container.port = "Калининград"
+
+    with pytest.raises(AttributeError):
+        container.container_type = "reefer"
+
+
+@pytest.mark.parametrize(
+    "invalid_port",
+    [" Мурманск", "Мурманск "],
+)
+def test_port_with_surrounding_whitespace_is_rejected(invalid_port):
+    with pytest.raises(ValueError, match="surrounding whitespace"):
+        Container(
+            id=1,
+            mass_kg=10000,
+            port=invalid_port,
+            container_type="dry",
+        )
