@@ -55,6 +55,5 @@ python -m pytest -v
 - [Модель предметной области и общая постановка задачи](docs/model.md)
 - [Журнал архитектурных и проектных решений](docs/decisions.md)
 - [Математическая модель](docs/math_model.md)
-- [Экскурс по проекту](docs/walkthrough.md)
 - [Состояние проекта](docs/state.md)
 - [Реестр расхождений и выполненных правок](docs/divergences.md)
