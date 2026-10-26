@@ -15,6 +15,7 @@ VESSEL_DEFAULTS = {
     "length_m": 120.0,
     "beam_m": 14.0,
     "depth_m": 10.0,
+    "max_draft_m": 8.0,
     "bays": 8,
     "rows": 4,
     "tiers": 3,

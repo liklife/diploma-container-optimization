@@ -191,6 +191,17 @@ def _load_vessel(path: Path) -> Vessel:
     }
     _validate_keys(data, expected, "vessel.json")
     _validate_version(data, "vessel.json")
+    if data["synthetic"] is not True:
+        raise ValueError(
+            "Invalid vessel configuration: "
+            "only synthetic vessels are supported; synthetic must be true"
+        )
+
+    if data["hull_model"] != "box_barge":
+        raise ValueError(
+            "Invalid vessel configuration: "
+            'only hull_model="box_barge" is supported'
+        )
 
     values = {
         key: value

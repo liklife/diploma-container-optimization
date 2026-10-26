@@ -8,6 +8,7 @@ _NUMERIC_FIELDS = (
     "length_m",
     "beam_m",
     "depth_m",
+    "max_draft_m",
     "first_bay_offset_m",
     "bay_spacing_m",
     "first_row_center_y_m",
@@ -28,6 +29,7 @@ _POSITIVE_FIELDS = (
     "length_m",
     "beam_m",
     "depth_m",
+    "max_draft_m",
     "bay_spacing_m",
     "row_spacing_m",
     "container_height_m",
@@ -56,6 +58,7 @@ class Vessel:
     length_m: float
     beam_m: float
     depth_m: float
+    max_draft_m: float
 
     bays: int
     rows: int
@@ -115,6 +118,11 @@ class Vessel:
                 raise ValueError(
                     f"Vessel {field_name} must be positive"
                 )
+
+        if self.max_draft_m > self.depth_m:
+            raise ValueError(
+                "Vessel max_draft_m must not exceed vessel depth"
+            )
 
         for field_name in _NON_NEGATIVE_FIELDS:
             if getattr(self, field_name) < 0:
@@ -176,6 +184,19 @@ class Vessel:
         if not 0 <= self.lightship_cg_z_m <= self.depth_m:
             raise ValueError(
                 "Lightship CG Z must fit within vessel depth"
+            )
+
+    def validate_draft(self, draft_m: float) -> None:
+        """Проверяет рассчитанную осадку относительно настроенного предела."""
+
+        draft = as_number(draft_m, "Calculated draft")
+
+        if draft < 0:
+            raise ValueError("Calculated draft must be non-negative")
+
+        if draft > self.max_draft_m:
+            raise ValueError(
+                "Calculated draft exceeds max_draft_m"
             )
 
     def coordinates_for(self, slot: Slot) -> tuple[float, float, float]:

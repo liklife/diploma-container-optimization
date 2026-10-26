@@ -44,7 +44,7 @@ def test_load_project_config():
     assert (config.vessel.bays, config.vessel.rows, config.vessel.tiers) == (
         8, 4, 3
     )
-
+    assert config.vessel.max_draft_m == 8.0
     assert config.limits.max_container_mass_kg == 30480
     assert config.limits.min_gm_m == 0.15
     assert config.limits.target_gm_m == 0.5
@@ -54,6 +54,25 @@ def test_load_project_config():
         "Санкт-Петербург",
         "Мурманск",
     )
+
+def test_real_vessel_configuration_is_rejected(tmp_path):
+    directory = copy_configs(tmp_path)
+    data = read_config(directory, "vessel.json")
+    data["synthetic"] = False
+    write_config(directory, "vessel.json", data)
+
+    with pytest.raises(ValueError, match="synthetic must be true"):
+        load_project_config(directory)
+
+
+def test_unsupported_hull_model_is_rejected(tmp_path):
+    directory = copy_configs(tmp_path)
+    data = read_config(directory, "vessel.json")
+    data["hull_model"] = "real_hull"
+    write_config(directory, "vessel.json", data)
+
+    with pytest.raises(ValueError, match="hull_model"):
+        load_project_config(directory)
 
 
 def test_normalize_canonical_port():
@@ -168,6 +187,8 @@ def test_missing_config_file_is_reported(tmp_path):
         ("length_m", True),
         ("bays", 2.5),
         ("synthetic", "true"),
+        ("max_draft_m", 0),
+        ("max_draft_m", 10.1),
     ],
 )
 def test_invalid_vessel_values_are_rejected(

@@ -13,6 +13,7 @@ DEFAULTS = {
     "length_m": 120.0,
     "beam_m": 14.0,
     "depth_m": 10.0,
+    "max_draft_m": 8.0,
     "bays": 8,
     "rows": 4,
     "tiers": 3,
@@ -99,6 +100,7 @@ NUMERIC_FIELDS = [
     "length_m",
     "beam_m",
     "depth_m",
+    "max_draft_m",
     "first_bay_offset_m",
     "bay_spacing_m",
     "first_row_center_y_m",
@@ -138,6 +140,7 @@ POSITIVE_FIELDS = [
     "length_m",
     "beam_m",
     "depth_m",
+    "max_draft_m",
     "bay_spacing_m",
     "row_spacing_m",
     "container_height_m",
@@ -239,3 +242,27 @@ def test_vessel_is_immutable():
 
     with pytest.raises(AttributeError):
         vessel.length_m = 150.0
+
+def test_max_draft_m_must_not_exceed_vessel_depth():
+    with pytest.raises(ValueError, match="must not exceed vessel depth"):
+        make_vessel(max_draft_m=10.1)
+
+
+def test_draft_within_limit_is_accepted():
+    vessel = make_vessel()
+
+    vessel.validate_draft(8.0)
+
+
+def test_draft_above_limit_is_rejected():
+    vessel = make_vessel()
+
+    with pytest.raises(ValueError, match="exceeds max_draft_m"):
+        vessel.validate_draft(8.01)
+
+
+def test_negative_draft_is_rejected():
+    vessel = make_vessel()
+
+    with pytest.raises(ValueError, match="non-negative"):
+        vessel.validate_draft(-0.1)
