@@ -1,0 +1,398 @@
+{
+  "input_path": "data/samples/containers_legacy.csv",
+  "input_sha256": "348cf14cad1c30688753958db859bec194fc93ffe5abdb161eeafa3bfc2a61d9",
+  "scenario_sizes": [
+    10,
+    50
+  ],
+  "containers_in_input_order": [
+    {
+      "id": 0,
+      "mass_kg": 8076.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 1,
+      "mass_kg": 8574.0,
+      "port": "Мурманск",
+      "container_type": "dry"
+    },
+    {
+      "id": 2,
+      "mass_kg": 14167.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 3,
+      "mass_kg": 21753.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 4,
+      "mass_kg": 11156.0,
+      "port": "Санкт-Петербург",
+      "container_type": "tank"
+    },
+    {
+      "id": 5,
+      "mass_kg": 5777.0,
+      "port": "Санкт-Петербург",
+      "container_type": "dry"
+    },
+    {
+      "id": 6,
+      "mass_kg": 15027.0,
+      "port": "Санкт-Петербург",
+      "container_type": "tank"
+    },
+    {
+      "id": 7,
+      "mass_kg": 9209.0,
+      "port": "Санкт-Петербург",
+      "container_type": "tank"
+    },
+    {
+      "id": 8,
+      "mass_kg": 7693.0,
+      "port": "Мурманск",
+      "container_type": "reefer"
+    },
+    {
+      "id": 9,
+      "mass_kg": 8251.0,
+      "port": "Калининград",
+      "container_type": "tank"
+    },
+    {
+      "id": 10,
+      "mass_kg": 12162.0,
+      "port": "Калининград",
+      "container_type": "reefer"
+    },
+    {
+      "id": 11,
+      "mass_kg": 23241.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 12,
+      "mass_kg": 19989.0,
+      "port": "Калининград",
+      "container_type": "reefer"
+    },
+    {
+      "id": 13,
+      "mass_kg": 9206.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 14,
+      "mass_kg": 11878.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 15,
+      "mass_kg": 18188.0,
+      "port": "Мурманск",
+      "container_type": "dry"
+    },
+    {
+      "id": 16,
+      "mass_kg": 15768.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 17,
+      "mass_kg": 11957.0,
+      "port": "Мурманск",
+      "container_type": "dry"
+    },
+    {
+      "id": 18,
+      "mass_kg": 19093.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 19,
+      "mass_kg": 15473.0,
+      "port": "Мурманск",
+      "container_type": "reefer"
+    },
+    {
+      "id": 20,
+      "mass_kg": 23436.0,
+      "port": "Мурманск",
+      "container_type": "dry"
+    },
+    {
+      "id": 21,
+      "mass_kg": 7802.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 22,
+      "mass_kg": 24864.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 23,
+      "mass_kg": 11112.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 24,
+      "mass_kg": 11894.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 25,
+      "mass_kg": 7077.0,
+      "port": "Санкт-Петербург",
+      "container_type": "tank"
+    },
+    {
+      "id": 26,
+      "mass_kg": 9393.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 27,
+      "mass_kg": 22263.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 28,
+      "mass_kg": 24180.0,
+      "port": "Калининград",
+      "container_type": "reefer"
+    },
+    {
+      "id": 29,
+      "mass_kg": 5168.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 30,
+      "mass_kg": 6933.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 31,
+      "mass_kg": 16113.0,
+      "port": "Санкт-Петербург",
+      "container_type": "reefer"
+    },
+    {
+      "id": 32,
+      "mass_kg": 21954.0,
+      "port": "Калининград",
+      "container_type": "tank"
+    },
+    {
+      "id": 33,
+      "mass_kg": 12389.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 34,
+      "mass_kg": 8948.0,
+      "port": "Санкт-Петербург",
+      "container_type": "dry"
+    },
+    {
+      "id": 35,
+      "mass_kg": 6751.0,
+      "port": "Мурманск",
+      "container_type": "dry"
+    },
+    {
+      "id": 36,
+      "mass_kg": 18357.0,
+      "port": "Санкт-Петербург",
+      "container_type": "reefer"
+    },
+    {
+      "id": 37,
+      "mass_kg": 21625.0,
+      "port": "Санкт-Петербург",
+      "container_type": "tank"
+    },
+    {
+      "id": 38,
+      "mass_kg": 14342.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 39,
+      "mass_kg": 15602.0,
+      "port": "Мурманск",
+      "container_type": "dry"
+    },
+    {
+      "id": 40,
+      "mass_kg": 5935.0,
+      "port": "Санкт-Петербург",
+      "container_type": "tank"
+    },
+    {
+      "id": 41,
+      "mass_kg": 10944.0,
+      "port": "Калининград",
+      "container_type": "reefer"
+    },
+    {
+      "id": 42,
+      "mass_kg": 21691.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 43,
+      "mass_kg": 12665.0,
+      "port": "Санкт-Петербург",
+      "container_type": "reefer"
+    },
+    {
+      "id": 44,
+      "mass_kg": 17977.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 45,
+      "mass_kg": 15667.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 46,
+      "mass_kg": 7514.0,
+      "port": "Мурманск",
+      "container_type": "tank"
+    },
+    {
+      "id": 47,
+      "mass_kg": 10457.0,
+      "port": "Мурманск",
+      "container_type": "reefer"
+    },
+    {
+      "id": 48,
+      "mass_kg": 8291.0,
+      "port": "Санкт-Петербург",
+      "container_type": "dry"
+    },
+    {
+      "id": 49,
+      "mass_kg": 5007.0,
+      "port": "Санкт-Петербург",
+      "container_type": "dry"
+    }
+  ],
+  "vessel": {
+    "vessel_id": "synthetic_box_barge_8x4x3",
+    "name": "Синтетическая баржа — сценарий 8x4x3",
+    "synthetic": true,
+    "hull_model": "box_barge",
+    "length_m": 120.0,
+    "beam_m": 14.0,
+    "depth_m": 10.0,
+    "max_draft_m": 8.0,
+    "bays": 8,
+    "rows": 4,
+    "tiers": 3,
+    "first_bay_offset_m": 7.5,
+    "bay_spacing_m": 15.0,
+    "first_row_center_y_m": -5.25,
+    "row_spacing_m": 3.5,
+    "base_height_m": 0.2,
+    "container_height_m": 2.591,
+    "tier_spacing_m": 2.6,
+    "lightship_mass_kg": 8000000.0,
+    "lightship_cg_x_m": 60.0,
+    "lightship_cg_y_m": 0.0,
+    "lightship_cg_z_m": 4.2,
+    "water_density_kg_m3": 1025.0,
+    "max_bay_load_t": 220.0,
+    "max_column_load_t": 60.0
+  },
+  "limits": {
+    "max_container_mass_kg": 30480.0,
+    "min_gm_m": 0.15,
+    "target_gm_m": 0.5,
+    "max_abs_heel_deg": 1.0,
+    "max_abs_trim_percent_of_length": 1.0,
+    "small_angle_model_max_abs_heel_deg": 5.0
+  },
+  "route": [
+    "Калининград",
+    "Санкт-Петербург",
+    "Мурманск"
+  ],
+  "plan_encoding": "placements.csv: plan_id, container_id and zero-based (bay, row, tier); select scenario from solutions.csv",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "pop_size": 40,
+  "generations": 25,
+  "python": "3.13.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "pymoo": "0.6.2"
+  },
+  "source_sha256": {
+    "experiments/preliminary.py": "ad9929edb25d5278c001d3af0a597c5bb58312b2fdc42c151dfc4ea37f94b430",
+    "src/stowage/algorithms/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/stowage/algorithms/decoder.py": "3e3ee2aabb677c068975f9a6eeaf21c8cc229e8719341b2ff76dd6ddf3bb5379",
+    "src/stowage/algorithms/heuristic.py": "e0683387e1ff234b05267b6c6a2e8c83364d97485e391fcfecaf865ddae857ad",
+    "src/stowage/algorithms/nsga2.py": "abbed97336005f4a225878c6f51ad98fb7ee1e05b84ca46ba66ee638c658dd7a",
+    "src/stowage/algorithms/pymoo_problem.py": "313217217d34fc7671a2306745a771ab4faa5d109e6f0760f2c1c48adabd126c",
+    "src/stowage/algorithms/solver.py": "54ca46eb922f80f08e9063492bda32982e70ac8444c1a5b12cdc58d21170171d",
+    "src/stowage/config/__init__.py": "a67c96fedfb82af0a057a2a973d167bb591fb8708a397cacaf4b2d99ed19d35e",
+    "src/stowage/config/loader.py": "681b732d9961384f2ea94dbf05f00baa5acb19eed439dd627336a848166218dc",
+    "src/stowage/domain/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/stowage/domain/_validation.py": "12b05eabb954dbbc1fa1b91edb68e2881ae48b97f791145fa0b926f7f729b918",
+    "src/stowage/domain/container.py": "1297dad450806a20f04d94e12812266e6e95e4a8ccb937a56beff62b22771fb2",
+    "src/stowage/domain/container_type.py": "8d9150c46d13d83f490e4c643d333f579d25e9682d7b390a03e29b23f7553263",
+    "src/stowage/domain/plan.py": "c30425d5945880d3543051bad5d4d230a1b6951093b99eada9790f0ab681b17f",
+    "src/stowage/domain/port_rotation.py": "b589bba0c461bb3a301b713e5edc5999eeca69455c3f39dd211fd934526df9fc",
+    "src/stowage/domain/slot.py": "d708e88671ee5d0f664b899e791096f9572cb28d37eae4c787b51ee6216df115",
+    "src/stowage/domain/vessel.py": "117ce2554cf72742b1966102a563e7a60cc4a3554a9ff4a7d1cd6c070acf83b1",
+    "src/stowage/model/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/stowage/model/blocking_pairs.py": "00d80b6920038a43aef5de625ce573c4e6db0f8cf48b850a37a1d25afc84aefc",
+    "src/stowage/model/center_of_gravity.py": "cf3defd03bf9f1f178a9daf741673b3bee28505c3f0ce83f6ca7f11853cb2973",
+    "src/stowage/model/constraints.py": "8b01644e65d47d4adfb3612f1618bfe50586481e0d7af8040cd226db14303a0d",
+    "src/stowage/model/evaluation.py": "ac07ff5da730668843104a3816e9dcb190b89f324d8868a3f058ff7caef442ce",
+    "src/stowage/model/heel_and_trim.py": "16998501a4ebbf3594d55aa2738f24135ea45b32db148c2bef72a2d82bd06144",
+    "src/stowage/model/hydrostatics.py": "3b0330fda4219560af1207e2a0234d20d419d98bf67d3e90a98e9e887da0012b",
+    "src/stowage/viz/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/stowage/viz/loading_2d.py": "b5877e938fbc2540b466740cef4ffc35a3f5854532fa1b26b5a1ae79199a5e97",
+    "src/stowage/viz/pareto.py": "3dace03556e95bd7ba53ebf5f12253d013ffb59c9588fea50ded3838d055a725"
+  },
+  "verified_repeats": true
+}
