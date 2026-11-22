@@ -1,0 +1,137 @@
+{
+  "experiment": "active_initial_transverse_gm",
+  "report_date": "2026-11-25",
+  "enumeration": "all 4! permutations in itertools.permutations order",
+  "control_permutations": {
+    "A_heavy_below": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "B_heavy_above": [
+      2,
+      3,
+      0,
+      1
+    ]
+  },
+  "physical_signature_fields": [
+    "draft_m",
+    "gm_t_m",
+    "gm_l_m",
+    "abs_heel_rad",
+    "abs_trim_m",
+    "r",
+    "is_valid"
+  ],
+  "vessel": {
+    "vessel_id": "gm_active_small_box_barge_1x2x2",
+    "name": "Малая синтетическая баржа для проверки GM",
+    "synthetic": true,
+    "hull_model": "box_barge",
+    "length_m": 12.0,
+    "beam_m": 6.0,
+    "depth_m": 8.0,
+    "max_draft_m": 4.0,
+    "bays": 1,
+    "rows": 2,
+    "tiers": 2,
+    "first_bay_offset_m": 6.0,
+    "bay_spacing_m": 6.0,
+    "first_row_center_y_m": -1.25,
+    "row_spacing_m": 2.5,
+    "base_height_m": 1.5,
+    "container_height_m": 2.0,
+    "tier_spacing_m": 2.0,
+    "lightship_mass_kg": 144000.0,
+    "lightship_cg_x_m": 6.0,
+    "lightship_cg_y_m": 0.0,
+    "lightship_cg_z_m": 1.5,
+    "water_density_kg_m3": 1000.0,
+    "max_bay_load_t": 220.0,
+    "max_column_load_t": 60.0
+  },
+  "containers": [
+    {
+      "id": 0,
+      "mass_kg": 30000.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 1,
+      "mass_kg": 30000.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 2,
+      "mass_kg": 5000.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    },
+    {
+      "id": 3,
+      "mass_kg": 5000.0,
+      "port": "Калининград",
+      "container_type": "dry"
+    }
+  ],
+  "route": [
+    "Калининград",
+    "Санкт-Петербург",
+    "Мурманск"
+  ],
+  "limits_from_production_config": {
+    "max_container_mass_kg": 30480.0,
+    "min_gm_m": 0.15,
+    "target_gm_m": 0.5,
+    "max_abs_heel_deg": 1.0,
+    "max_abs_trim_percent_of_length": 1.0,
+    "small_angle_model_max_abs_heel_deg": 5.0
+  },
+  "parameter_rationale": {
+    "12_by_6_m_hull": "round dimensions of a small synthetic rectangular barge",
+    "one_bay_two_rows_two_tiers": "smallest grid with symmetric lower and upper pairs",
+    "lightship_144_t_and_cg_z_1_5_m": "round fixed inputs, independent of optimizer output",
+    "slot_centres_z_m": [
+      2.5,
+      4.5
+    ],
+    "cargo_masses_t": [
+      30,
+      30,
+      5,
+      5
+    ],
+    "unchanged_min_gm_m": 0.15
+  },
+  "summary": {
+    "permutations": 24,
+    "unique_cargo_plans": 24,
+    "unique_physical_results": 4,
+    "valid": 12,
+    "invalid": 12,
+    "invalid_with_active_min_gm": 4,
+    "invalid_without_min_gm": 8,
+    "all_gm_signs_consistent": true,
+    "all_overall_contracts_consistent": true
+  },
+  "python": "3.13.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "stowage-optimization": "0.1.0",
+    "pymoo": "0.6.2",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2"
+  },
+  "source_sha256": {
+    "experiments/gm_active.py": "b77504bce9684dd13398b1d45ed1edf1e9f17421dd2043c5f064b773b5bd805d",
+    "src/stowage/algorithms/decoder.py": "3e3ee2aabb677c068975f9a6eeaf21c8cc229e8719341b2ff76dd6ddf3bb5379",
+    "src/stowage/algorithms/pymoo_problem.py": "313217217d34fc7671a2306745a771ab4faa5d109e6f0760f2c1c48adabd126c",
+    "src/stowage/model/constraints.py": "8b01644e65d47d4adfb3612f1618bfe50586481e0d7af8040cd226db14303a0d",
+    "src/stowage/model/evaluation.py": "ac07ff5da730668843104a3816e9dcb190b89f324d8868a3f058ff7caef442ce",
+    "configs/limits.json": "6d1410ca824553a22d327ea9c2a124ff2cd2b670a79dbae80c83c28ccf788ebd"
+  }
+}

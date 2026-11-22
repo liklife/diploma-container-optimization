@@ -1,0 +1,2 @@
+﻿permutations,unique_cargo_plans,unique_physical_results,valid,invalid,invalid_with_active_min_gm,invalid_without_min_gm,all_gm_signs_consistent,all_overall_contracts_consistent
+24,24,4,12,12,4,8,True,True
